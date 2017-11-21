@@ -19,11 +19,11 @@ class Pensum(models.Model):
     anio      = models.IntegerField()
     materias   = models.ManyToManyField(Materia, through='Asignacion')
     def __str__(self):
-        return self.nombre
+        return self.alumno
 
 class Asignacion(models.Model):
-    Materia = models.ForeignKey(Materia, on_delete=models.CASCADE)
-    Pensum = models.ForeignKey(Pensum, on_delete=models.CASCADE)
+    materia = models.ForeignKey(Materia, on_delete=models.CASCADE)
+    pensum = models.ForeignKey(Pensum, on_delete=models.CASCADE)
 
 class AsignacionInLine(admin.TabularInline):
     model = Asignacion
